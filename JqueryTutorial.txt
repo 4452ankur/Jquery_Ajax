@@ -1,0 +1,873 @@
+https://www.w3schools.com/jquery/
+
+version 3.5
+
+<head>
+<script src="jquery-3.2.1.min.js"></script>
+</head> 
+
+jQuery Syntax
+
+The jQuery syntax is tailor-made for selecting HTML elements and performing some action on the element(s).
+
+Basic syntax is: $(selector).action()
+•A $ sign to define/access jQuery
+•A (selector) to "query (or find)" HTML elements
+•A jQuery action() to be performed on the element(s)
+
+Examples:
+
+$(this).hide() - hides the current element.
+$("p").hide() - hides all <p> elements.
+$(".test").hide() - hides all elements with class="test".
+$("#test").hide() - hides the element with id="test".
+
+The Document Ready Event
+
+You might have noticed that all jQuery methods in our examples, are inside a document ready event:
+
+$(document).ready(function(){
+
+   // jQuery methods go here...
+
+}); 
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").hide();
+    });
+});
+</script>
+</head>
+<body>
+<h2>This is a heading</h2>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<button>Click me</button>
+
+</body>
+</html>
+$(document).ready()
+
+The $(document).ready() method allows us to execute a function when the document is fully loaded. 
+
+This is to prevent any jQuery code from running before the document is finished loading (is ready).
+It is good practice to wait for the document to be fully loaded and ready before working with it.
+ This also allows you to have your JavaScript code before the body of your document, in the head section.
+ 
+jQuery Selectors
+
+jQuery selectors allow you to select and manipulate HTML element(s).
+jQuery selectors are used to "find" (or select) HTML elements based on their name,
+ id, classes, types, attributes, values of attributes and much more. 
+ It's based on the existing CSS Selectors, and in addition, it has some own custom selectors.
+All selectors in jQuery start with the dollar sign and parentheses: $().
+
+The element Selector
+
+The jQuery element selector selects elements based on the element name.
+You can select all <p> elements on a page like this:
+
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").hide();
+    });
+}); 
+
+The #id Selector
+
+The jQuery #id selector uses the id attribute of an HTML tag to find the specific element.
+An id should be unique within a page, so you should use the #id selector when you want to find a single, unique element.
+To find an element with a specific id, write a hash character, followed by the id of the HTML element:
+
+https://www.w3schools.com/jquery/default.asp
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#test").hide();
+    });
+});
+</script>
+</head>
+<body>
+<h2>This is a heading</h2>
+<p>This is a paragraph.</p>
+<p id="test">This is another paragraph.</p>
+<button>Click me</button>
+
+The .class Selector
+
+The jQuery class selector finds elements with a specific class.
+To find elements with a specific class, write a period character, followed by the name of the class:
+
+$(document).ready(function(){
+    $("button").click(function(){
+        $(".test").hide();
+    });
+}); 
+
+Syntax 						Description		
+
+$("*") 						Selects all elements.
+$(this)						Selects the current HTML element.
+$("p.intro") 				Selects all <p> elements with class="intro".
+$("p:first") 				Selects the first <p> element.
+$("ul li:first") 			Selects the first <li> element of the first <ul>.
+$("ul li:first-child") 		Selects the first <li> element of every <ul>.
+$("[href]") 				Selects all elements with an href attribute.
+$("a[target='_blank']") 	Selects all <a> elements with a target attribute value equal to "_blank".
+$("a[target!='_blank']") 	Selects all <a> elements with a target attribute value NOT equal to "_blank".
+$(":button") 				Selects all <button> elements and <input> elements of type="button".
+$("tr:even") 				Selects all even <tr> elements.
+$("tr:odd") 				Selects all odd <tr> elements.
+
+*********** Events****************
+What are Events?
+
+All the different visitor's actions that a web page can respond to are called events.
+An event represents the precise moment when something happens.
+
+Examples:
+•moving a mouse over an element
+•selecting a radio button
+•clicking on an element
+
+<script>
+$(document).ready(function(){
+    $("#p1").mouseenter(function(){
+        alert("You entered p1!");
+    });
+});
+</script>
+</head>
+<body>
+<p id="p1">Enter this paragraph.</p>
+</body>
+
+dblclick()
+
+The dblclick() method attaches an event handler function to an HTML element.
+The function is executed when the user double-clicks on the HTML element:
+
+mouseenter()
+
+The mouseenter() method attaches an event handler function to an HTML element.
+The function is executed when the mouse pointer enters the HTML element:
+
+mouseleave()
+
+The mouseleave() method attaches an event handler function to an HTML element.
+The function is executed when the mouse pointer leaves the HTML element:
+
+mousedown()
+
+The mousedown() method attaches an event handler function to an HTML element.
+The function is executed, when the left, middle or right mouse button is pressed down,
+ while the mouse is over the HTML element:
+ 
+ mouseup()
+
+The mouseup() method attaches an event handler function to an HTML element.
+The function is executed, when the left, middle or right mouse button is released,
+ while the mouse is over the HTML element:
+ 
+ hover()
+
+The hover() method takes two functions and is a combination of the mouseenter() 
+and mouseleave() methods.
+The first function is executed when the mouse enters the HTML element,
+ and the second function is executed when the mouse leaves the HTML element:
+ 
+ focus()
+
+The focus() method attaches an event handler function to an HTML form field.
+The function is executed when the form field gets focus:
+
+blur()
+
+The blur() method attaches an event handler function to an HTML form field.
+The function is executed when the form field loses focus:
+
+The on() Method
+
+The on() method attaches one or more event handlers for the selected elements.
+Attach a click event to a <p> element:
+
+Attach multiple event handlers to a <p> element:
+
+$("p").on({
+    mouseenter: function(){
+        $(this).css("background-color", "lightgray");
+    }, 
+    mouseleave: function(){
+        $(this).css("background-color", "lightblue");
+    }, 
+    click: function(){
+        $(this).css("background-color", "yellow");
+    } 
+}); 
+
+Hide() and Show() 
+
+toggle()
+
+fadeOut() --method is used to fade out a visible element.
+
+fadeToggle() --The jQuery fadeToggle() method toggles between the fadeIn() and fadeOut() methods.
+
+All Event handaler example given below....
+
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(this).dblclick(function(){
+           alert("please don't double click!");
+    });
+	
+     $("#p1").mouseenter(function(){
+        alert("You entered Mouse p1!");
+    });
+	
+	$("#p2").mouseleave(function(){
+    alert("Bye! You now leave p1!");
+	});
+	
+	$("#p3").mousedown(function(){
+    alert("Mouse down over p3!");
+	});
+	
+	$("#p4").mouseup(function(){
+    alert("Mouse up over p4!");
+	});
+	
+	$("#p5").hover(function(){
+    alert("You entered p5!");
+				},
+	function(){
+    alert("Bye! You now leave p5!");
+	});
+	
+	$(document).ready(function(){
+    $("#p6").on("click", function(){
+        alert("You click on p6!");;
+									});
+	});
+	
+	$("input").focus(function(){
+        $(this).css("background-color", "yellow");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+	
+	$("p").on({
+        mouseenter: function(){
+            $(this).css("background-color", "lightgray");
+        },  
+        mouseleave: function(){
+            $(this).css("background-color", "lightblue");
+        }, 
+        click: function(){
+            $(this).css("background-color", "yellow");
+        }  
+    });
+	
+	$("#hide").click(function(){
+        $("#p10").hide(1000);
+    });
+    $("#show").click(function(){
+        $("#p10").show(3000);
+    });
+	
+	$("#toggle").click(function(){
+        $("p").toggle(1000);
+    });
+	
+	$("#fadeOut").click(function(){
+        $("#div1").fadeOut();
+        $("#div2").fadeOut("slow");
+        $("#div3").fadeOut(3000);
+	});
+		
+	$("#fadeToggle").click(function(){
+        $("#div4").fadeToggle();
+        $("#div5").fadeToggle("slow");
+        $("#div6").fadeToggle(3000);
+	)};
+	
+});
+</script>
+</head>
+<body>
+
+<p>If you double-click on me, I will disappear.</p>
+<p>Click me too!</p>
+<p id="p1">Mouse mouseenter function p1!</p>
+<p id="p2">Mouse mouseleave function p2!</p>
+<p id="p3">Mouse emousedown function p3!</p>
+<p id="p4">Mouse mouseup function alert p4!</p>
+<p id="p5">Mouse hover fuction alert p5!</p>
+<p id="p6">Mouse click  "On" fuction alert p6!</p>
+<p id="p7">Click or move the mouse pointer over this paragraph. Attach multiple event handlers  alert p7!</p>
+<p id="p8">Mouse enter alert p8!</p>
+<p id="p9">Mouse enter alert p9!</p>
+<p id="p10">If you click on the "Hide" button, I will disappear.</p>
+<p id="p11">If you click on the "toggle" button, I will disappear and appear</p>
+<p id="p12">If you click on the "toggle" button, I will disappear and appear</p>
+
+Name: <input type="text" name="fullname"><br />
+Email: <input type="text" name="email"><br />
+
+<div id="div1" style="width:80px;height:80px;background-color:red;"></div><br>
+<div id="div2" style="width:80px;height:80px;background-color:green;"></div><br>
+<div id="div3" style="width:80px;height:80px;background-color:blue;"></div>
+
+<div id="div4" style="width:80px;height:80px;background-color:yellow;"></div><br>
+<div id="div5" style="width:80px;height:80px;background-color:blue;"></div><br>
+<div id="div6" style="width:80px;height:80px;background-color:red;"></div>
+
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+<button id="toggle">Toggle</button>
+<button id="fadeOut">FadeOut</button>
+<button id="fadeToggle">fadeToggle</button>
+
+</body>
+</html>
+
+jQuery Effects
+1. Hide and show
+2.toggle()
+3.fadeOut() --method is used to fade out a visible element.
+4.fadeToggle() --The jQuery fadeToggle() method toggles between the fadeIn() and fadeOut() methods.
+5.Sliding Methods
+
+With jQuery you can create a sliding effect on elements.
+jQuery has the following slide methods:
+•slideDown()
+•slideUp()
+•slideToggle()
+6.Callback Functions
+
+JavaScript statements are executed line by line. However, with effects,
+the next line of code can be run even though the effect is not finished.
+This can create errors.To prevent this, you can create a callback function.
+A callback function is executed after the current effect is finished.
+Typical syntax: $(selector).hide(speed,callback);
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("p").hide("slow", function(){
+            alert("The paragraph is now hidden");
+        });
+    });
+});
+</script>
+</head>
+<body>
+
+<button>Hide</button>
+<p>This is a paragraph with little content.</p>
+</body>
+7.Chaining
+Chaining allows us to run multiple jQuery methods (on the same element) within a single statement
+exe->  $("#p1").css("color", "red").slideUp(2000).slideDown(2000); 
+
+each() Method
+The each() method specifies a function to run for each matched element.
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("li").each(function(){
+            alert($(this).text())
+        });
+    });
+});
+</script>
+</head>
+<body>
+<button>Alert the value of each list item</button>
+<ul>
+  <li>Coffee</li>
+  <li>Milk</li>
+  <li>Soda</li>
+</ul>
+
+</body>
+
+jQuery HTML
+1.Get
+Get Content - text(), html(), and val()
+
+Three simple, but useful, jQuery methods for DOM manipulation are:
+•text() - Sets or returns the text content of selected elements
+•html() - Sets or returns the content of selected elements (including HTML markup)
+•val() - Sets or returns the value of form fields
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        alert("Text: " + $("#test").text());
+    });
+    $("#btn2").click(function(){
+        alert("HTML: " + $("#test").html());
+    });
+	
+	    $("button3").click(function(){
+        alert("Value: " + $("#test1").val());
+    });
+});
+</script>
+</head>
+<body>
+<p id="test">This is some <b>bold</b> text in a paragraph.</p>
+<p>Name: <input type="text" id="test1" value="Mickey Mouse"></p>
+<button id="btn1">Show Text</button>
+<button id="btn2">Show HTML</button>
+<button id="btn3">Show Value</button>
+</body>
+
+2.Set
+Set Content - text(), html(), and val()
+
+We will use the same three methods from the previous page to set content:
+•text() - Sets or returns the text content of selected elements
+•html() - Sets or returns the content of selected elements (including HTML markup)
+•val() - Sets or returns the value of form fields
+
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("#test1").text("Hello world!");
+    });
+    $("#btn2").click(function(){
+        $("#test2").html("<b>Hello world!</b>");
+    });
+    $("#btn3").click(function(){
+        $("#test3").val("Dolly Duck");
+    });
+});
+</script>
+</head>
+<body>
+
+<p id="test1">This is a paragraph.</p>
+<p id="test2">This is another paragraph.</p>
+
+<p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
+
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button>
+
+</body>
+
+Set Attributes - attr()  
+
+The attr() method also allows you to set multiple attributes at the same time.
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#w3s").attr({
+            "href" : "https://www.w3schools.com/jquery",
+            "title" : "W3Schools jQuery Tutorial"
+        });
+    });
+});
+</script>
+</head>
+<body>
+
+<p><a href="https://www.w3schools.com" title="some title" id="w3s">W3Schools.com</a></p>
+
+<button>Change href and title</button>
+
+<p>Mouse over the link to see that the href attribute has changed and a title attribute is set.</p>
+
+</body>
+
+Add Elements
+
+Add New HTML Content
+
+We will look at four jQuery methods that are used to add new content:
+•append() - Inserts content at the end of the selected elements.
+•prepend() - Inserts content at the beginning of the selected elements
+•after() - Inserts content after the selected elements
+•before() - Inserts content before the selected elements.
+
+append() Method & prepend() Method
+
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("p").append(" <b>Appended text</b>.");
+    });
+
+    $("#btn2").click(function(){
+        $("ol").append("<li>Appended item</li>");
+    });
+	
+	 $("#btn3").click(function(){
+        $("p").prepend("<b>Prepended text</b>. ");
+    });
+    $("#btn4").click(function(){
+        $("ol").prepend("<li>Prepended item</li>");
+    });
+});
+</script>
+</head>
+<body>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<ol>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ol>
+
+<button id="btn1">Append text</button>
+<button id="btn2">Append list items</button>
+
+
+<button id="btn3">Prepend text</button>
+<button id="btn4">Prepend list item</button>
+
+</body>
+
+after() and before() Methods
+
+The jQuery after() method inserts content AFTER the selected HTML elements.
+The jQuery before() method inserts content BEFORE the selected HTML elements.
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("img").before("<b>Before</b>");
+    });
+
+    $("#btn2").click(function(){
+        $("img").after("<i>After</i>");
+    });
+});
+</script>
+</head>
+<body>
+
+<img src="/images/w3jquery.gif" alt="jQuery" width="100" height="140"><br><br>
+
+<button id="btn1">Insert before</button>
+<button id="btn2">Insert after</button>
+
+</body>
+
+Add Several New Elements With after() and before()
+
+<script>
+function afterText() {
+    var txt1 = "<b>I </b>";                   // Create element with HTML
+    var txt2 = $("<i></i>").text("love ");    // Create with jQuery
+    var txt3 = document.createElement("b");   // Create with DOM
+    txt3.innerHTML = "jQuery!";
+    $("img").after(txt1, txt2, txt3);      // Insert new elements after img
+}
+</script>
+</head>
+<body>
+
+<img src="/images/w3jquery.gif" alt="jQuery" width="100" height="140">
+
+<p>Click the button to insert text after the image.</p>
+
+<button onclick="afterText()">Insert after</button>
+</body>
+
+Remove Elements
+•remove() - Removes the selected element (and its child elements)
+•empty() - Removes the child elements from the selected element
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").empty();
+    });
+	 $("button").click(function(){
+        $("#div1").remove();
+    });
+	
+	    $("button").click(function(){
+        $("p").remove(".test);
+    });
+});
+</script>
+
+<style>
+.test {
+    color: red;
+    font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
+
+This is some text in the div.
+<p>This is a paragraph in the div.</p>
+<p>This is another paragraph in the div.</p>
+<p class="test">This is another paragraph.</p>
+<p class="test">This is another paragraph.</p>
+
+</div>
+<div id="div2">
+<p class="test">This is another paragraph.</p>
+<p class="test">This is another paragraph.</p>
+</div>
+<br>
+
+<button>Empty the div element</button>
+<button>Remove div element</button>
+<button>Remove all p elements with class="test"</button>
+
+jQuery Manipulating CSS
+
+jQuery has several methods for CSS manipulation. We will look at the following methods:
+•addClass() - Adds one or more classes to the selected elements
+•removeClass() - Removes one or more classes from the selected elements
+•toggleClass() - Toggles between adding/removing classes from the selected elements
+•css() - Sets or returns the style attribute
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("h1, h2, p").addClass("blue");
+        $("div").addClass("important");
+    });
+});
+</script>
+<style>
+.important {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.blue {
+    color: blue;
+}
+</style>
+</head>
+<body>
+
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+
+<div>This is some important text!</div><br>
+
+<button>Add classes to elements</button>
+
+</body>
+
+What is Traversing?
+
+jQuery traversing, which means "move through", are used to "find" (or select) HTML elements based on their relation to other elements.
+ Start with one selection and move through that selection until you reach the elements you desire.
+ 
+ Traversing - Filtering
+ The first(), last(), eq(), filter() and not() Methods
+ The first() method returns the first element of the specified elements.
+ $(document).ready(function(){
+    $("div").first();
+}); 
+
+The last() method returns the last element of the specified elements.
+The following example selects the last <div> element:
+
+ $(document).ready(function(){
+    $("div").last();
+});
+
+jQuery eq() method
+The eq() method returns an element with a specific index number of the selected elements.
+$(document).ready(function(){
+    $("p").eq(1);
+}); 
+filter() Method
+
+The filter() method lets you specify a criteria.
+ Elements that do not match the criteria are removed from the selection, and those that match will be returned.
+<script>
+$(document).ready(function(){
+    $("p").filter(".intro").css("background-color", "yellow");
+});
+</script>
+</head>
+<body>
+
+<h1>Welcome to My Homepage</h1>
+
+<p>My name is Donald.</p>
+<p class="intro">I live in Duckburg.</p>
+<p class="intro">I love Duckburg.</p>
+<p>My best friend is Mickey.</p>
+
+</body>
+</html>
+not() Method
+
+The not() method returns all elements that do not match the criteria.
+Tip: The not() method is the opposite of filter().
+
+$(document).ready(function(){
+    $("p").not(".intro");
+});
+
+jQuery AJAX....
+
+AJAX = Asynchronous JavaScript and XML
+
+jQuery load() Method
+
+The jQuery load() method is a simple, but powerful AJAX method for fetching remote data.
+The load() method loads data from a server and puts the returned data 
+into the selected element.
+Here is the content of our example file: "demo_test.txt":
+<h2>jQuery and AJAX is FUN!!!</h2>
+ <p id="p1">This is some text in a paragraph.</p>
+ 
+ <script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
+            if(statusTxt == "success")
+                alert("External content loaded successfully!");
+            if(statusTxt == "error")
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+        });
+    });
+});
+</script>
+</head>
+<body>
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+<button>Get External Content</button>
+</body>
+
+AJAX get() and post() Methods
+*** IMPORTANT *** Open the RouteConfig.cs file and modife the line in the methods RegisterRoutes() " settings.AutoRedirectMode = RedirectMode.Off"
+Two commonly used methods for a request-response between a client and server are: GET and POST.
+•GET - Requests data from a specified resource
+•POST - Submits data to be processed to a specified resource
+
+GET is basically used for just getting (retrieving) some data from the server. 
+Note: The GET method may return cached data.
+POST can also be used to get some data from the server. 
+However, the POST method NEVER caches data, and is often used to send data along with the request.
+
+Get()
+Tip: Here is how the ASP file looks like ("demo_test.asp"):
+<%
+ response.write("This is some text from an external ASP file.")
+ %>
+ 
+ <script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.get("demo_test.asp", function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+</script>
+</head>
+<body>
+<button>Send an HTTP GET request to a page and get the result back</button>
+</body>
+
+jQuery $.post() Method
+
+The $.post() method requests data from the server using an HTTP POST request.
+
+Syntax:
+
+
+$.post(URL,data,callback); 
+
+The required URL parameter specifies the URL you wish to request.
+The optional data parameter specifies some data to send along with the request.
+The optional callback parameter is the name of a function to be executed
+ if the request succeeds.
+The following example uses the $.post() method to send some data along with the request:
+The first parameter of $.post() is the URL we wish to request ("demo_test_post.asp").
+Then we pass in some data to send along with the request (name and city).
+The ASP script in "demo_test_post.asp" reads the parameters, processes them,
+ and returns a result.
+The third parameter is a callback function. 
+The first callback parameter holds the content of the page requested,
+and the second callback parameter holds the status of the request.
+
+Here is how the ASP file looks like ("demo_test_post.asp"):
+<%
+ dim fname,city
+ fname=Request.Form("name")
+ city=Request.Form("city")
+ Response.Write("Dear " & fname & ". ")
+ Response.Write("Hope you live well in " & city & ".")
+ %>
+ 
+ <script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.post("demo_test_post.asp",
+        {
+          name: "Donald Duck",
+          city: "Duckburg"
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+</script>
+</head>
+<body>
+<button>Send an HTTP POST request to a page and get the result back</button>
+</body>
+
+ jQuery noConflict() Method
+ 
+ As you already know; jQuery uses the $ sign as a shortcut for jQuery.
+There are many other popular JavaScript frameworks like: Angular, Backbone, Ember, Knockout, and more.
+What if other JavaScript frameworks also use the $ sign as a shortcut?
+If two different frameworks are using the same shortcut, one of them might stop working.
+The jQuery team have already thought about this, and implemented the noConflict() method.
+
+<script>
+$.noConflict();
+jQuery(document).ready(function(){
+    jQuery("button").click(function(){
+        jQuery("p").text("jQuery is still working!");
+    });
+});
+</script>
+</head>
+<body>
+
+<p>This is a paragraph.</p>
+<button>Test jQuery</button>
+
+
+
+
+
